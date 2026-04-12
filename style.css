@@ -10,8 +10,8 @@ body{
   font-family: sans-serif;
 }
 body.light{
-  background: rgb(217, 61, 87)
-  color: #000;
+  background: rgb(217, 61, 87);
+  color: white;
 }
 
 body.dark{
@@ -143,6 +143,7 @@ body.dark .searchBox button{
   border-radius:12px;
   padding:20px;
   z-index:100;
+  display: none;
 }
 .popup-card h3{
   margin : 12px 0;
