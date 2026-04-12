@@ -1,108 +1,83 @@
-# FlavorFinder
-Tastify is a modern recipe discovery web application that allows users to search, filter, and explore meals using TheMealDB API.
 
-# 🍽️ Tastify
 
-## 📌 Project Overview
+🍽️ FlavorFinder (Tastify)
 
-**Tastify** is a modern web application that helps users discover and explore delicious recipes from around the world.
-Users can search for meals, get random recipe suggestions, and filter dishes based on their preferences.
+FlavorFinder (Tastify) is a modern recipe discovery web application that allows users to search, filter, and explore meals using the TheMealDB API.
 
-This project is built to demonstrate the use of public APIs and frontend development skills.
+📌 Project Overview
 
----
+FlavorFinder helps users discover delicious recipes from around the world.
+Users can search for meals, filter by categories, sort recipes, and view detailed cooking instructions.
 
-## 🚀 Project Idea
+This project demonstrates:
 
-The aim of Tastify is to create a user-friendly recipe discovery platform where users can:
+API integration
+DOM manipulation
+Responsive UI design
+Dark / Light mode
+LocalStorage usage
 
-* Search meals by name
-* Explore random dishes
-* View detailed recipe information
+🚀 Live Demo
+https://roshnisingh0116.github.io/FlavorFinder/
+✨ Features
+🔍 Search recipes by name
+❤️ Favorite recipes (LocalStorage)
+🌙 Dark / Light mode toggle
+📋 Popup recipe instructions
+📱 Responsive layout
+🔗 Public API Used
 
----
+This project uses TheMealDB API
 
-## 🔗 Public API Used
-
-This project uses the **TheMealDB API**.
-
-### API Base URL:
+Base URL:
 
 https://www.themealdb.com/api/json/v1/1/
 
-### Example Endpoints:
+Endpoints used:
 
-* Search meal: `/search.php?s=chicken`
-* Random meal: `/random.php`
+Search meals
 
----
+/search.php?s=chicken
 
-## ✨ Features
+Random meal
 
-* 🔍 Search recipes by name
-* 🍀 Get random recipes
-* 🧾 View ingredients list
-* 🌍 Filter by category and area
-* ↕️ Sort recipes alphabetically
-* 📋 Display multiple recipes
+/random.php
 
----
+Lookup by ID
 
-## 🛠️ Technologies Used
-
-* HTML5
-* CSS3
-* JavaScript (ES6)
-* Fetch API
-
----
-
-## 📂 Project Structure
-
-```
-Tastify/
+/lookup.php?i=52772
+🛠️ Technologies Used
+HTML5
+CSS3
+JavaScript (ES6)
+Fetch API
+LocalStorage
+Git & GitHub Pages
+📂 Project Structure
+FlavorFinder/
 │── index.html
 │── style.css
 │── script.js
+│── background.png
 │── README.md
-```
+▶️ How to Use
+Enter a recipe name in search bar
+Click Search
+Use category buttons to filter
+Click Random for surprise recipe
+Click View to see instructions
+Click ❤️ to save favorite
+Toggle 🌙 for dark mode
+⚙️ Setup Locally
 
----
+Clone repository
 
-## ⚙️ Setup & Installation
+git clone https://github.com/roshnisingh0116/FlavorFinder.git
 
-1. Clone the repository:
+Open folder
 
-```
-git clone https://github.com/your-username/tastify.git
-```
+cd FlavorFinder
 
-2. Navigate to the project folder:
+Run
 
-```
-cd tastify
-```
-
-3. Open `index.html` in your browser
-
----
-
-## ▶️ How to Use
-
-* Enter a dish name in the search bar
-* Click **Search** to view recipes
-* Use filters to refine results
-* Click **Random** to explore new dishes
-
----
-
-## 🎯 Future Improvements
-
-* ❤️ Add favorite recipes feature
-* 🌙 Dark mode
-* 📱 Fully responsive UI
-* 🔐 User authentication
-
----
-
-
+open index.html
