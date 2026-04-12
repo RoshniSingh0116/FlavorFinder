@@ -2,20 +2,56 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>FlavorFinder</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel = "stylesheet" href = "style.css">
+  <title>FalvorFinder</title>
 </head>
-<body>
+<body class = "light">
+  <div class="container">
+    <h1>Tastify</h1>
+    <p>Not just recipes — original ideas for every craving</p>
+    <button id="themeToggle" onclick="toggleTheme()">🌙 Dark</button>
+     <div class="searchBox">
+      <input type = "text" placeholder="Search for recipe" id = "searchInput">
+      <button onclick="searchRecipes()">Search</button>
+     </div>
+  </div>
+  <div class="categories">
+  <button onclick="searchCategory('Chinese')">🥡 Chinese</button>
+  <button onclick="searchCategory('Thai')">🍜 Thai</button>
 
-  <h1>🍴 FlavorFinder</h1>
+  <button onclick="searchCategory('Chicken')">🍗 Chicken</button>
+  <button onclick="searchCategory('Beef')">🥩 Beef</button>
+  <button onclick="searchCategory('Fish')">🐟 Seafood</button>
+  <button onclick="searchCategory('Egg')">🥚 Egg</button>
+  <button onclick="searchCategory('Paneer')">🧀 Paneer</button>
 
-  <input type="text" id="searchInput" placeholder="Search food..." />
-  <button onclick="searchMeal()">Search</button>
+  <button onclick="searchCategory('Vegetarian')">🥗 Veg</button>
+  <button onclick="searchCategory('Salad')">🥬 Salad</button>
+  <button onclick="searchCategory('Soup')">🍲 Soup</button>
+  <button onclick="searchCategory('Rice')">🍚 Rice</button>
+  <button onclick="searchCategory('Noodles')">🍝 Noodles</button>
 
-  <div id="loading">Loading...</div>
+  <button onclick="searchCategory('Pizza')">🍕 Pizza</button>
+  <button onclick="searchCategory('Burger')">🍔 Burger</button>
+  <button onclick="searchCategory('Pasta')">🍝 Pasta</button>
+  <button onclick="searchCategory('Sandwich')">🥪 Sandwich</button>
+  <button onclick="searchCategory('Fries')">🍟 Snacks</button>
 
-  <div id="mealsContainer"></div>
+  <button onclick="searchCategory('Cake')">🍰 Cake</button>
+  <button onclick="searchCategory('Chocolate')">🍫 Chocolate</button>
+  <button onclick="searchCategory('Ice Cream')">🍨 Ice Cream</button>
 
-  <script src="script.js"></script>
+</div>
+  <div class="recipes" id = "recipes"></div>
+  <div class="notFound" id = "notFound">Craving</div>
+  <div class="popup-card" id = "popupCard">
+    <button class = "close-btn" onclick="closeRecipe()">Close</button>
+    <h3 class = "recipeTitle" id = "recipeTitle"></h3>
+    <p class = "recipeDetails" id = "recipeDetails"></p>
+     
+  </div>
+
+  <script src = "script.js"></script>
 </body>
 </html>

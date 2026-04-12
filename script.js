@@ -1,78 +1,126 @@
-const container = document.getElementById("mealsContainer");
-const loading = document.getElementById("loading");
+function searchRecipes(){
+  const searchInput = document.getElementById("searchInput").value
+  const recipesDiv = document.getElementById("recipes")
+  const notFoundDiv = document.getElementById("notFound")
 
-loading.style.display = "none";
+  recipesDiv.innerHTML =" ";
+  notFoundDiv.style.display = "none";
 
-async function searchMeal() {
-  const query = document.getElementById("searchInput").value;
+  if(searchInput.trim()===""){
+    notFoundDiv.innerHTML = "Please Enter a recipe name"
+    notFoundDiv.style.display = "block"
+  return  }
+ fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInput}`)
+    .then(response=>response.json())
+    .then(data=>{
+      if(!data.meals){
+        notFoundDiv.innerHTML = "Recipe Not Found"
+        notFoundDiv.style.display = "block"
+      }
+      else{
+        data.meals.forEach(meal=>{
+          const card = document.createElement("div")
+          card.classList.add("recipe-card")
+          card.innerHTML = `
+          <img src = "${meal.strMealThumb}" alt = "${meal.strMeal}">
+          <h3>${meal.strMeal}</h3>
+          <button onclick="viewRecipe('${meal.idMeal}')">View Recipe</button>
+          `;
+          recipesDiv.appendChild(card)
+        })
+      }
+    })
 
-  if (!query) {
-    alert("Please enter something!");
-    return;
+}
+// function viewRecipe(mealId){
+//   const popupCard = document.getElementById("popupCard")
+//   const recipeTitle = document.getElementById("recipeTitle")
+//   const recipeDetails = document.getElementById("recipeDetails")
+//   fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`)
+//     .then(response=>response.json())
+//     .then(data=>{
+//       const meal = data.meals[0]
+//       recipeTitle.innerText = meal.strMeal;
+//       recipeDetails.innerText = meal.strInstructions;
+//       popupCard.style.display = "block"
+//     })
+
+//   )
+
+// }
+// function closeRecipe(){
+//   document.getElementById("popupCard").style.display = "none"
+// }
+function searchRecipes(){
+  const searchInput = document.getElementById("searchInput").value
+  const recipesDiv = document.getElementById("recipes")
+  const notFoundDiv = document.getElementById("notFound")
+
+  recipesDiv.innerHTML = "";
+  notFoundDiv.style.display = "none";
+
+  if(searchInput.trim() === ""){
+    notFoundDiv.innerHTML = "Please Enter a recipe name"
+    notFoundDiv.style.display = "block"
+    return
   }
 
-  loading.style.display = "block";
-  container.innerHTML = "";
+  fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInput}`)
+    .then(response => response.json())
+    .then(data=>{
+      if(!data.meals){
+        notFoundDiv.innerHTML = "Recipe Not Found"
+        notFoundDiv.style.display = "block"
+      }
+      else{
+        data.meals.forEach(meal=>{
+          const card = document.createElement("div")
+          card.classList.add("recipe-card")
 
-  try {
-    const response = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`
-    );
+          card.innerHTML = `
+          <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+          <h3>${meal.strMeal}</h3>
+          <button onclick="viewRecipe('${meal.idMeal}')">View Recipe</button>
+          `;
 
-    const data = await response.json();
+          recipesDiv.appendChild(card)
+        })
+      }
+    })
+}
 
-    loading.style.display = "none";
+function viewRecipe(mealId){
+  const popupCard = document.getElementById("popupCard")
+  const recipeTitle = document.getElementById("recipeTitle")
+  const recipeDetails = document.getElementById("recipeDetails")
 
-    if (!data.meals) {
-      container.innerHTML = "<p>No meals found 😢</p>";
-      return;
-    }
+  fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`)
+    .then(response => response.json())
+    .then(data=>{
+      const meal = data.meals[0]
+      recipeTitle.innerText = meal.strMeal
+      recipeDetails.innerText = meal.strInstructions
+      popupCard.style.display = "block"
+    })
+}
 
-    data.meals.forEach(meal => {
-      const mealDiv = document.createElement("div");
-      mealDiv.classList.add("meal");
+function closeRecipe(){
+  document.getElementById("popupCard").style.display = "none"
+}
 
-      mealDiv.innerHTML = `
-        <img src="${meal.strMealThumb}" class="meal-img" />
-        <h3>${meal.strMeal}</h3>
-        <p>🌍 ${meal.strArea}</p>
-      `;
+function toggleTheme(){
+  document.body.classList.toggle("dark")
 
+  const btn = document.getElementById("themeToggle")
 
-      const img = mealDiv.querySelector(".meal-img");
-
-      img.addEventListener("click", () => {
-        showRecipe(meal);
-      });
-
-      container.appendChild(mealDiv);
-    });
-
-  } catch (error) {
-    loading.style.display = "none";
-    container.innerHTML = "<p>Something went wrong 😵</p>";
+  if(document.body.classList.contains("dark")){
+    btn.innerText = "☀️ Light"
+  }else{
+    btn.innerText = "🌙 Dark"
   }
 }
 
-
-function showRecipe(meal) {
-  let ingredients = "";
-
-  for (let i = 1; i <= 20; i++) {
-    if (meal[`strIngredient${i}`]) {
-      ingredients += `${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}\n`;
-    }
-  }
-
-  alert(
-    `🍔 ${meal.strMeal}
-
-🌍 ${meal.strArea}
-
-🧂 Ingredients:
-${ingredients}
-
-📖 Recipe:
-${meal.strInstructions}`
-  );
+function searchCategory(category){
+  document.getElementById("searchInput").value = category
+  searchRecipes()
 }
