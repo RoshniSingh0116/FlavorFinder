@@ -10,7 +10,7 @@ body{
   font-family: sans-serif;
 }
 body.light{
-  background: #ffffff;
+  background: rgb(217, 61, 87)
   color: #000;
 }
 
@@ -129,19 +129,20 @@ body.dark .searchBox button{
   background-color: goldenrod;
   color:white;
 }
+
+
 .popup-card{
-  background: white;
   position: fixed;
   top:50%;
-  left : 50%;
-  transform : translate(-50%,-50%) ;
-  border-radius: 8px;
-  width: 300px;
-  height : 400px;
-  overflow-y: auto;
-  z-index: 10;
-  border : 2px solid red;
-  display: none;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:white;
+  width:320px;
+  max-height:420px;
+  overflow-y:auto;
+  border-radius:12px;
+  padding:20px;
+  z-index:100;
 }
 .popup-card h3{
   margin : 12px 0;
@@ -158,18 +159,17 @@ body.dark .searchBox button{
   margin-right: 10px;
   overflow-y: auto;
 }
-.close-btn{
-  position: absolute;
-  top : 20px;
-  right : 30px;
-  background: rgb(186, 95, 95);
-  padding: 6px;
-  border : 0;
-  border-radius: 6px;
-  color:#fff;
-  font-weight: 600;
-  cursor: pointer;
 
+ .close-btn{
+  position:absolute;
+  top:10px;
+  right:10px;
+  background:crimson;
+  color:white;
+  border:none;
+  padding:6px 10px;
+  border-radius:6px;
+  cursor:pointer;
 }
 
 .categories{
@@ -206,4 +206,17 @@ body.dark .searchBox button{
   .categories{
     grid-template-columns: repeat(1, 1fr);
   }
+}
+
+.card-btns{
+display:flex;
+justify-content:space-between;
+padding:10px;
+}
+
+.card-btns button{
+border:none;
+padding:6px 10px;
+border-radius:6px;
+cursor:pointer;
 }
